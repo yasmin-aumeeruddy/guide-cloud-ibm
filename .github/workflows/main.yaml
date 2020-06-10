@@ -37,11 +37,10 @@ jobs:
     - name: Run conversion tool
       run: |
         cd action-test
-        git checkout master
-        git pull
         rm README.md
         javac GuideConverter.java
         java GuideConverter ${{github.repository}}
+        git submodule update
         ls
     - name: commit 
       run: |
