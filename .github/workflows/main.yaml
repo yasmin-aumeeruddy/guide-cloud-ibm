@@ -37,15 +37,17 @@ jobs:
     - name: Run conversion tool
       run: |
         cd action-test
-       git checkout master
+        git checkout master
         git pull
         rm README.md
         javac GuideConverter.java
         java GuideConverter ${{github.repository}}
-        cat README.md
         ls
     - name: commit 
-      run: git commit -m "test" 
+      run: |
+        cd ..
+        git add action-test
+        git commit -m "move submodule to latest commit in master"
     - name: git push
       run: git push
     env:
