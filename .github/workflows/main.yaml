@@ -37,6 +37,7 @@ jobs:
     - name: Run conversion tool
       run: |
         cd action-test
+        git pull
         ls
         rm README.md
         javac GuideConverter.java
